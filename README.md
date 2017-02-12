@@ -10,15 +10,16 @@ Simple node module to create nested directories of a path like `mkdir -p`
 
     const openPath = require('rfc-open-path');
 
-    openPath('a/b/c/d/e.f');
+    openPath('a/b/c/d/e');
 
 ## Reference
 
-    openPath(pathToOpen)
+    openPath(pathToOpen, fileInPath)
 
 Create nested directories of a path.
 
-* `pathToOpen`: String with the path. Can be the path of a file.
+* `pathToOpen`: String with the path.
+* `fileInPath`: Indicates if the last item of the path is a file.
 
 ## Development
 

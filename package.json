@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "posttest": "npm run lint",
-    "lint": "jscs index.js test/test.js"
+    "lint": "jscs **/*.js"
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,5 @@
   "devDependencies": {
     "jscs": "^3.0.7",
     "mocha": "^3.2.0"
-  },
-  "dependencies": {
-    "rfc-folders": "^1.0.0"
   }
 }
