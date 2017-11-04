@@ -1,22 +1,22 @@
-const path = require('path');
+const path = require("path");
 
-function folders(source, fileInPath) {
-
+const folders = (source, fileInPath) => {
   const list = [];
 
   if (!fileInPath) {
     list.push(path.join(path.dirname(source), path.basename(source)));
   }
 
-  let dirname = path.dirname(source);
+  let original = source;
+  let dirname = path.dirname(original);
 
-  while (dirname != source) {
+  while (dirname !== original) {
     list.push(dirname);
-    source = dirname;
-    dirname = path.dirname(source);
+    original = dirname;
+    dirname = path.dirname(original);
   }
 
   return list.slice(0, -1).reverse();
-}
+};
 
-module.exports = exports = folders;
+module.exports = folders;

@@ -1,34 +1,26 @@
-const fs = require('fs');
-const folders = require('./folders');
+const fs = require("fs");
+const util = require("util");
+const folders = require("./folders");
 
-function mkdir(folder) {
-  return new Promise((resolve, reject) => {
-    fs.mkdir(folder, error => {
-      if (error) {
-        reject(error);
-      }
-      resolve();
-    });
-  });
-}
+const mkdir = util.promisify(fs.mkdir);
 
-async function openPath(pathToOpen, fileInPath, callback) {
-
+const openPath = async (pathToOpen, fileInPath, callback) => {
   for (const folder of folders(pathToOpen, fileInPath)) {
     try {
       await mkdir(folder);
     } catch (error) {
-      if (error.code !== 'EEXIST') {
+      if (error.code !== "EEXIST") {
         if (callback) {
           return callback(error);
-        } else {
-          throw error;
         }
+        throw error;
       }
     }
   }
 
-  callback && callback();
-}
+  if (callback) callback();
 
-module.exports = exports = openPath;
+  return undefined;
+};
+
+module.exports = openPath;
