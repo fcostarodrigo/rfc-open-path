@@ -1,6 +1,6 @@
 {
   "name": "rfc-open-path",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Create nested directories of a path like mkdir -p",
   "main": "src/index.js",
   "types": "src/index.d.ts",
