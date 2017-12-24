@@ -31,9 +31,7 @@ Promise usage
 
 ## Reference
 
-`openPath(pathToOpen: String, fileInPath?: Boolean, callback?: callback) => Promise`
-
-`callback(error: Error)`
+`async function openPath(pathToOpen: string, fileInPath?: boolean, callback?: (error?: Error) => void): Promise<void>`
 
 Create nested directories of a path. Can be used with a callback or promise.
 
