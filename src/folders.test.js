@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const folders = require("./folders");
 
 describe("folders", () => {
