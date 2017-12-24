@@ -7,43 +7,57 @@ Simple node module to create nested directories of a path like `mkdir -p`.
 
 ## Installation
 
-    npm install rfc-open-path
+```bash
+npm install rfc-open-path
+```
 
 ## Usage
 
-    const openPath = require('rfc-open-path');
+```javascript
+const openPath = require("rfc-open-path");
+```
 
 Callback usage
 
-    openPath('a/b/c/d/e', true, error => {
-      if (error) {
-        throw error;
-      }
+```javascript
+openPath("a/b/c/d/e", true, error => {
+  if (error) throw error;
 
-      console.log('done');
-    });
+  console.log("done");
+});
+```
 
 Promise usage
 
-    openPath('a/b/c/d/e', true)
-      .then(() => console.log('done'))
-      .catch(error => console.error(error));
+```javascript
+openPath("a/b/c/d/e", true)
+  .then(() => console.log("done"))
+  .catch(error => console.error(error));
+```
 
-## Reference
+## Documentation
 
-`async function openPath(pathToOpen: string, fileInPath?: boolean, callback?: (error?: Error) => void): Promise<void>`
+```typescript
+function openPath(
+  pathToOpen: string,
+  fileInPath?: boolean,
+  callback?: (error?: Error) => void
+): Promise<void>;
+```
 
 Create nested directories of a path. Can be used with a callback or promise.
 
 * `pathToOpen`: String with the path.
 * `fileInPath`: Indicates if the last item of the path is a file.
-* `callback`: Called after the directories are created or after an error.
+* `callback`: Called after the directories were created or after an error.
 * `promise`: Resolves to nothing after the directories are created or rejects with an error.
 
 ## Development
 
-    npm test
+```bash
+npm test
+```
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT License](http://www.opensource.org/licenses/mit-license.php)
