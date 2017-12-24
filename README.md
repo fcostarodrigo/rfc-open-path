@@ -1,9 +1,9 @@
 # RFC-OPEN-PATH
 
-Simple node module to create nested directories of a path like `mkdir -p`.
+[![Travis](https://img.shields.io/travis/fcostarodrigo/rfc-open-path.svg)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
+[![Codecov](https://img.shields.io/codecov/c/github/fcostarodrigo/rfc-open-path.svg)](https://codecov.io/gh/fcostarodrigo/rfc-open-path/)
 
-See [rfc-open-path-sync](https://github.com/fcostarodrigo/rfc-open-path-sync)
-for the synchronous version.
+Simple node module to create nested directories of a path like `mkdir -p`.
 
 ## Installation
 
