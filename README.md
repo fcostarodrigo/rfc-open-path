@@ -55,8 +55,16 @@ Create nested directories of a path. Can be used with a callback or promise.
 
 ## Development
 
+Full tests with coverage
+
 ```bash
 npm test
+```
+
+Unit tests and watch for changes
+
+```bash
+npm run unit-test
 ```
 
 ## License
