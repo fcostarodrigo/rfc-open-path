@@ -1,7 +1,8 @@
 # RFC-OPEN-PATH
 
-[![Travis](https://img.shields.io/travis/fcostarodrigo/rfc-open-path.svg)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
-[![Codecov](https://img.shields.io/codecov/c/github/fcostarodrigo/rfc-open-path.svg)](https://codecov.io/gh/fcostarodrigo/rfc-open-path/)
+[![Build Status](https://travis-ci.org/fcostarodrigo/rfc-open-path.svg?branch=master)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/maintainability)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/test_coverage)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/test_coverage)
 
 Simple node module to create nested directories of a path like `mkdir -p`.
 
