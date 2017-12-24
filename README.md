@@ -1,49 +1,72 @@
 # RFC-OPEN-PATH
 
-[![Travis](https://img.shields.io/travis/fcostarodrigo/rfc-open-path.svg)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
-[![Codecov](https://img.shields.io/codecov/c/github/fcostarodrigo/rfc-open-path.svg)](https://codecov.io/gh/fcostarodrigo/rfc-open-path/)
+[![Build Status](https://travis-ci.org/fcostarodrigo/rfc-open-path.svg?branch=master)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/maintainability)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/test_coverage)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/test_coverage)
 
 Simple node module to create nested directories of a path like `mkdir -p`.
 
 ## Installation
 
-    npm install rfc-open-path
+```bash
+npm install rfc-open-path
+```
 
 ## Usage
 
-    const openPath = require('rfc-open-path');
+```javascript
+const openPath = require("rfc-open-path");
+```
 
 Callback usage
 
-    openPath('a/b/c/d/e', true, error => {
-      if (error) {
-        throw error;
-      }
+```javascript
+openPath("a/b/c/d/e", true, error => {
+  if (error) throw error;
 
-      console.log('done');
-    });
+  console.log("done");
+});
+```
 
 Promise usage
 
-    openPath('a/b/c/d/e', true)
-      .then(() => console.log('done'))
-      .catch(error => console.error(error));
+```javascript
+openPath("a/b/c/d/e", true)
+  .then(() => console.log("done"))
+  .catch(error => console.error(error));
+```
 
-## Reference
+## Documentation
 
-`async function openPath(pathToOpen: string, fileInPath?: boolean, callback?: (error?: Error) => void): Promise<void>`
+```typescript
+function openPath(
+  pathToOpen: string,
+  fileInPath?: boolean,
+  callback?: (error?: Error) => void
+): Promise<void>;
+```
 
 Create nested directories of a path. Can be used with a callback or promise.
 
 * `pathToOpen`: String with the path.
 * `fileInPath`: Indicates if the last item of the path is a file.
-* `callback`: Called after the directories are created or after an error.
+* `callback`: Called after the directories were created or after an error.
 * `promise`: Resolves to nothing after the directories are created or rejects with an error.
 
 ## Development
 
-    npm test
+Full tests with coverage
+
+```bash
+npm test
+```
+
+Unit tests and watch for changes
+
+```bash
+npm run unit-test
+```
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT License](http://www.opensource.org/licenses/mit-license.php)

@@ -4,20 +4,21 @@ const folders = require("./folders");
 
 const mkdir = util.promisify(fs.mkdir);
 
-const openPath = async (pathToOpen, fileInPath, callback) => {
+const openPathCore = async (pathToOpen, fileInPath) => {
+  const ignoreExistError = error => {
+    if (error.code === "EEXIST") return Promise.resolve();
+    return Promise.reject(error);
+  };
+
   for (const folder of folders(pathToOpen, fileInPath)) {
-    try {
-      await mkdir(folder);
-    } catch (error) {
-      if (error.code === "EEXIST") continue;
-      if (callback) return callback(error);
-      throw error;
-    }
+    await mkdir(folder).catch(ignoreExistError);
   }
+};
 
-  if (callback) callback();
-
-  return undefined;
+const openPath = async (pathToOpen, fileInPath, callback) => {
+  const promise = openPathCore(pathToOpen, fileInPath);
+  if (callback) return promise.then(callback).catch(callback);
+  return promise;
 };
 
 module.exports = openPath;
