@@ -9,12 +9,9 @@ const openPath = async (pathToOpen, fileInPath, callback) => {
     try {
       await mkdir(folder);
     } catch (error) {
-      if (error.code !== "EEXIST") {
-        if (callback) {
-          return callback(error);
-        }
-        throw error;
-      }
+      if (error.code === "EEXIST") continue;
+      if (callback) return callback(error);
+      throw error;
     }
   }
 

@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
+    "posttest": "codecov",
     "test": "jest --coverage",
     "pretest": "eslint src"
   },
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/fcostarodrigo/rfc-open-path#readme",
   "devDependencies": {
+    "codecov": "^3.0.0",
     "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
