@@ -11,6 +11,7 @@
     "unit-test": "jest unit --watch",
     "format": "pretty-quick"
   },
+  "bin": "src/cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fcostarodrigo/rfc-open-path.git"
@@ -41,5 +42,8 @@
     "jest": "^24.8.0",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.11.0"
+  },
+  "dependencies": {
+    "yargs": "^13.2.4"
   }
 }

@@ -11,6 +11,7 @@ Node module that creates missing folders in the middle of a path, like `mkdir -p
 Let's say you want to create the file `docs/UI/button.txt`, but the folders `UI` and `docs` don't exist.
 
 If you just try to create the file, this happens:
+
 ```js
 > fs.writeFileSync('docs/UI/button.txt', 'test')
 Thrown:
@@ -24,6 +25,7 @@ Thrown:
 ```
 
 If you try to create the folder you get this:
+
 ```js
 > fs.mkdirSync('docs/UI')
 Thrown:
@@ -33,11 +35,12 @@ Thrown:
 ```
 
 Using this library you can create the inner folders easily:
-```js
-const openPath = require('rfc-open-path');
 
-openPath('docs/UI/button.txt', true).then(() => {
-  fs.writeFileSync('docs/UI/button.txt', 'test');
+```js
+const openPath = require("rfc-open-path");
+
+openPath("docs/UI/button.txt", true).then(() => {
+  fs.writeFileSync("docs/UI/button.txt", "test");
 });
 ```
 
@@ -80,6 +83,12 @@ async function() {
 }
 ```
 
+### CLI
+
+```bash
+rfc-open-path --help
+```
+
 ## Documentation
 
 ```ts
@@ -90,10 +99,10 @@ function openPath(
 ): Promise<void>;
 ```
 
-* `pathToOpen`: String with the path.
-* `fileInPath`: Indicates if the last item of the path is a file.
-* `callback`: Called after the directories were created or after an error.
-* `promise`: Resolves to nothing after the directories are created or rejects with an error.
+- `pathToOpen`: String with the path.
+- `fileInPath`: Indicates if the last item of the path is a file.
+- `callback`: Called after the directories were created or after an error.
+- `promise`: Resolves to nothing after the directories are created or rejects with an error.
 
 ## Development
 
