@@ -4,7 +4,42 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/maintainability)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/test_coverage)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/test_coverage)
 
-Simple node module to create nested directories of a path like `mkdir -p`.
+Node module that creates missing folders in the middle of a path, like `mkdir -p`.
+
+## Description
+
+Let's say you want to create the file `docs/UI/button.txt`, but the folders `UI` and `docs` don't exist.
+
+If you just try to create the file, this happens:
+```js
+> fs.writeFileSync('docs/UI/button.txt', 'test')
+Thrown:
+{ Error: ENOENT: no such file or directory, open 'docs/UI/button.txt'
+    at Object.openSync (fs.js:448:3)
+    at Object.writeFileSync (fs.js:1210:35)
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'docs/UI/button.txt' }
+```
+
+If you try to create the folder you get this:
+```js
+> fs.mkdirSync('docs/UI')
+Thrown:
+{ Error: ENOENT: no such file or directory, mkdir 'docs/UI'
+    at Object.mkdirSync (fs.js:773:3) errno: -2, syscall: 'mkdir', code: 'ENOENT', path: 'docs/UI' }
+
+```
+
+Using this library you can create the inner folders easily:
+```js
+const openPath = require('rfc-open-path');
+
+openPath('docs/UI/button.txt', true).then(() => {
+  fs.writeFileSync('docs/UI/button.txt', 'test');
+});
+```
 
 ## Installation
 
@@ -14,39 +49,46 @@ npm install rfc-open-path
 
 ## Usage
 
-```javascript
+```js
 const openPath = require("rfc-open-path");
 ```
 
-Callback usage
+### Callbacks
 
-```javascript
-openPath("a/b/c/d/e", true, error => {
+```js
+openPath("docs/UI/button.txt", true, error => {
   if (error) throw error;
 
   console.log("done");
 });
 ```
 
-Promise usage
+### Promises
 
-```javascript
-openPath("a/b/c/d/e", true)
+```js
+openPath("docs/UI")
   .then(() => console.log("done"))
   .catch(error => console.error(error));
 ```
 
+### Async await
+
+```js
+async function() {
+  await openPath("docs/UI");
+  fs.writeFileSync('docs/UI/button.txt', 'test');
+}
+```
+
 ## Documentation
 
-```typescript
+```ts
 function openPath(
   pathToOpen: string,
   fileInPath?: boolean,
   callback?: (error?: Error) => void
 ): Promise<void>;
 ```
-
-Create nested directories of a path. Can be used with a callback or promise.
 
 * `pathToOpen`: String with the path.
 * `fileInPath`: Indicates if the last item of the path is a file.

@@ -1,7 +1,7 @@
 {
   "name": "rfc-open-path",
   "version": "3.0.5",
-  "description": "Create nested directories of a path like mkdir -p",
+  "description": "Node module that creates missing folders in the middle of a path",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
