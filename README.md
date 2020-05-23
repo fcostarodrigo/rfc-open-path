@@ -1,10 +1,10 @@
 # RFC-OPEN-PATH
 
 [![Build Status](https://travis-ci.org/fcostarodrigo/rfc-open-path.svg?branch=master)](https://travis-ci.org/fcostarodrigo/rfc-open-path)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/maintainability)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/3f6da794cbfc4bce2a6a/test_coverage)](https://codeclimate.com/github/fcostarodrigo/rfc-open-path/test_coverage)
 
 Node module that creates missing folders in the middle of a path, like `mkdir -p`.
+
+DEPRECATED: See [@fcostarodrigo/open-path](https://www.npmjs.com/package/@fcostarodrigo/open-path)
 
 ## Description
 
