@@ -5,7 +5,7 @@ const folders = require("./folders");
 const mkdir = util.promisify(fs.mkdir);
 
 const openPathCore = async (pathToOpen, fileInPath) => {
-  const ignoreExistError = error => {
+  const ignoreExistError = (error) => {
     if (error.code === "EEXIST") return Promise.resolve();
     return Promise.reject(error);
   };

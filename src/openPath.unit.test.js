@@ -3,7 +3,7 @@ const openPath = require("./openPath");
 
 jest.mock("fs");
 
-const mockMkDir = results => {
+const mockMkDir = (results) => {
   for (const { dir: expectedDir, result } of results) {
     fs.mkdir.mockImplementationOnce((dir, callback) => {
       expect(dir).toBe(expectedDir);
@@ -25,7 +25,7 @@ describe("openPath", () => {
       { dir: "a/b", result: null },
       { dir: "a/b/c", result: null },
       { dir: "a/b/c/d", result: null },
-      { dir: "a/b/c/d/e.f", result: null }
+      { dir: "a/b/c/d/e.f", result: null },
     ]);
 
     await openPath(file);
@@ -38,7 +38,7 @@ describe("openPath", () => {
       { dir: "a", result: null },
       { dir: "a/b", result: null },
       { dir: "a/b/c", result: null },
-      { dir: "a/b/c/d.e", result: null }
+      { dir: "a/b/c/d.e", result: null },
     ]);
 
     await openPath(folder);
@@ -50,33 +50,37 @@ describe("openPath", () => {
 
     mockMkDir([
       { dir: "a", result: { code: "EEXIST" } },
-      { dir: "a/file", result: error }
+      { dir: "a/file", result: error },
     ]);
 
     await expect(openPath(file)).rejects.toBe(error);
   });
 
-  it("should work with callbacks", done => {
-    const folder = "a/b.c/d/";
+  it("should work with callbacks", () => {
+    return new Promise((done) => {
+      const folder = "a/b.c/d/";
 
-    mockMkDir([
-      { dir: "a", result: null },
-      { dir: "a/b.c", result: null },
-      { dir: "a/b.c/d", result: null }
-    ]);
+      mockMkDir([
+        { dir: "a", result: null },
+        { dir: "a/b.c", result: null },
+        { dir: "a/b.c/d", result: null },
+      ]);
 
-    openPath(folder, false, done);
+      openPath(folder, false, done);
+    });
   });
 
-  it("should pass errors to the callback", done => {
-    const folder = "a/b.c";
-    const error = new Error("error");
+  it("should pass errors to the callback", () => {
+    return new Promise((done) => {
+      const folder = "a/b.c";
+      const error = new Error("error");
 
-    mockMkDir([{ dir: "a", result: error }]);
+      mockMkDir([{ dir: "a", result: error }]);
 
-    openPath(folder, true, err => {
-      expect(err).toBe(error);
-      done();
+      openPath(folder, true, (err) => {
+        expect(err).toBe(error);
+        done();
+      });
     });
   });
 });
