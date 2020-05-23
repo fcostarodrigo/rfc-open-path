@@ -59,7 +59,7 @@ const openPath = require("rfc-open-path");
 ### Callbacks
 
 ```js
-openPath("docs/UI/button.txt", true, error => {
+openPath("docs/UI/button.txt", true, (error) => {
   if (error) throw error;
 
   console.log("done");
@@ -71,7 +71,7 @@ openPath("docs/UI/button.txt", true, error => {
 ```js
 openPath("docs/UI")
   .then(() => console.log("done"))
-  .catch(error => console.error(error));
+  .catch((error) => console.error(error));
 ```
 
 ### Async await
